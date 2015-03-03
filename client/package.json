@@ -1,5 +1,14 @@
 {
   "name": "TT Contacts",
+  "description": "Simple contacts applicationp",
+  "version": "0.1.0",
   "main": "index.html",
-  "toolbar": false
+  "window": {
+    "title": "TT Contacts",
+    "toolbar": false,
+    "frame": true,
+    "position": "mouse",
+    "width": 1024,
+    "height": 720
+  }
 }

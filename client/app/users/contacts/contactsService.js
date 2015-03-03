@@ -8,7 +8,7 @@
         if ($window.cordova) {
             return $injector.get('cordovaContactsService');
         } else {
-            return $injector.get('dummyContactsService');
+            return $injector.get('nwContactsService');
         }
     }
 
