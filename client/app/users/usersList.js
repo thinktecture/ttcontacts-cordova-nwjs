@@ -31,6 +31,7 @@
             var user = self.selected;
 
             $mdBottomSheet.show({
+                parent: angular.element(document.getElementById('content')),
                 templateUrl: 'app/users/contactSheet.html',
                 controller: UserSheetController,
                 controllerAs: "vm"
