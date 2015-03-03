@@ -2,7 +2,7 @@
     angular.module('users')
         .controller('UsersListController', UsersListController);
 
-    function UsersListController(usersService, $mdSidenav, $mdBottomSheet, $log, $cordovaContacts) {
+    function UsersListController(usersService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
         var self = this;
 
         self.selected = null;
@@ -41,22 +41,7 @@
                 if(clickedItem.name == "Phone") {
                     $log.debug('### And now on to the native platform....');
 
-                    var contact = {};
-                    contact.displayName = self.selected.firstName + ' ' + self.selected.firstName + ' (TT-C)';
-                    contact.name = {};
-                    contact.name.givenName = self.selected.firstName;
-                    contact.name.familyName = self.selected.lastName;
-                    contact.phoneNumbers = [];
-                    contact.phoneNumbers[0] = {type: 'work', value: self.selected.phone, preference: true };
-                    contact.emails = [];
-                    contact.emails[0] = {type: 'work', value: self.selected.email, preference: true };
-                    contact.note = 'From TT Contacts!';
-
-                    $cordovaContacts.save(contact).then(function(result) {
-                        // Contact saved
-                    }, function(err) {
-                        // Contact error
-                    });
+                    contactsService.createContact(self.selected);
                 }
             });
 
