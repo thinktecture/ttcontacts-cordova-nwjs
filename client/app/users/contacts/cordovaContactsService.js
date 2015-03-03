@@ -15,12 +15,12 @@
             cordovaContact.note = 'From TT Contacts!';
 
             $cordovaContacts.save(cordovaContact).then(function(result) {
-                $log('### Contact successfully saved.');
+                $log.debug('### Contact successfully saved.');
             }, function(err) {
-                $log('### Error saving Contact: ' + err);
+                $log.debug('### Error saving Contact: ' + err);
             });
         }
     }
 
-    angular.module('users').service('contactsService', ContactsService);
+    angular.module('users').service('cordovaContactsService', ContactsService);
 })();

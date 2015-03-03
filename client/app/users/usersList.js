@@ -39,8 +39,6 @@
                 $log.debug('### ' + clickedItem.name + ' clicked!');
 
                 if(clickedItem.name == "Phone") {
-                    $log.debug('### And now on to the native platform....');
-
                     contactsService.createContact(self.selected);
                 }
             });
