@@ -8,7 +8,7 @@
 
     if (window.cordova) {
         document.addEventListener('deviceready', startAngularApp, false);
-        alert("Cordova");
+        //alert("Cordova");
     } else {
         startAngularApp();
     }

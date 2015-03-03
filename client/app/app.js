@@ -1,5 +1,5 @@
 angular
-    .module('starterApp', ['ngMaterial', 'users'])
+    .module('starterApp', ['ngMaterial', 'users', 'ngCordova'])
     .config(function ($mdThemingProvider, $mdIconProvider) {
 
         $mdIconProvider
