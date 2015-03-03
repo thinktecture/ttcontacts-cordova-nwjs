@@ -11,9 +11,15 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
+
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
 
-<body layout="column" ng-controller="UsersListController as ul">
+<body layout="column" ng-controller="UsersListController as ul" ng-cloak>
 
 <md-toolbar layout="row">
     <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
@@ -87,6 +93,9 @@
 <script src="app/users/usersModule.js"></script>
 <script src="app/users/usersList.js"></script>
 <script src="app/users/usersData.js"></script>
+<script src="app/users/contacts/contactsService.js"></script>
+<script src="app/users/contacts/cordovaContactsService.js"></script>
+<script src="app/users/contacts/dummyContactsService.js"></script>
 
 <script src="app/init.js"></script>
 
