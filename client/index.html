@@ -9,11 +9,11 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
-    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
 </head>
 
-<body ng-app="starterApp" layout="column" ng-controller="UsersListController as ul">
+<body ng-app="ttContacts" layout="column" ng-controller="UsersListController as ul">
 
 <md-toolbar layout="row">
     <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
@@ -85,5 +85,8 @@
 <script src="app/users/usersList.js"></script>
 <script src="app/users/usersData.js"></script>
 
+<!--
+<script src="build/all.js"></script>
+-->
 </body>
 </html>

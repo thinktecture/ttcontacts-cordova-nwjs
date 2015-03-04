@@ -76,5 +76,5 @@
         };
     }
 
-    angular.module('users').service('usersService', UsersDataservice);
+    angular.module('ttContacts').service('usersService', UsersDataservice);
 })();
