@@ -1,5 +1,5 @@
 angular
-    .module('starterApp', ['ngMaterial', 'users', 'ngCordova'])
+    .module('ttContacts', ['ngMaterial', 'ngCordova'])
     .config(function ($mdThemingProvider, $mdIconProvider) {
 
         $mdIconProvider

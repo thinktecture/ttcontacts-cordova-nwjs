@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     annotate = require('gulp-ng-annotate');
 
 gulp.task("scripts", function () {
-    return gulp.src('client/app/**/*.js')
+    return gulp.src(['client/app/**/*.js', '!client/app/init.js'])
         //.pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(annotate())

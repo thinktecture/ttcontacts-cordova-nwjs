@@ -1,5 +1,5 @@
 (function () {
-    angular.module('users')
+    angular.module('ttContacts')
         .controller('UsersListController', UsersListController);
 
     function UsersListController(usersService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
