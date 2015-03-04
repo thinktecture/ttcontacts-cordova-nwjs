@@ -3,7 +3,7 @@
 
     function startAngularApp() {
         var appContainer = document.querySelector('html');
-        angular.bootstrap(appContainer, ['starterApp']);
+        angular.bootstrap(appContainer, ['ttContacts']);
     }
 
     if (window.cordova) {

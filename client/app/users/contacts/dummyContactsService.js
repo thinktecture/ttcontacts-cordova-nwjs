@@ -7,5 +7,5 @@
         }
     }
 
-    angular.module('users').service('dummyContactsService', ContactsService);
+    angular.module('ttContacts').service('dummyContactsService', ContactsService);
 })();
