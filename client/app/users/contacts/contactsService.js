@@ -12,5 +12,5 @@
         }
     }
 
-    angular.module('ttContacts').factory('contactsService', ContactsService);
+    app.module.factory('contactsService', ContactsService);
 })();

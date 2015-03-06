@@ -1,6 +1,5 @@
 (function () {
-    angular.module('ttContacts')
-        .controller('UsersListController', UsersListController);
+    'use strict';
 
     function UsersListController(usersService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
         var self = this;
@@ -57,4 +56,6 @@
             }
         }
     }
+
+    app.module.controller('UsersListController', UsersListController);
 })();

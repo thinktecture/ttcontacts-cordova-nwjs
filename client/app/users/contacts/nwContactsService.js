@@ -38,5 +38,5 @@
         }
     }
 
-    angular.module('ttContacts').service('nwContactsService', ContactsService);
+    app.module.service('nwContactsService', ContactsService);
 })();

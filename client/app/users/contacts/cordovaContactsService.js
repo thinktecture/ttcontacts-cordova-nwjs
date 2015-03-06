@@ -22,5 +22,5 @@
         }
     }
 
-    angular.module('ttContacts').service('cordovaContactsService', ContactsService);
+    app.module.service('cordovaContactsService', ContactsService);
 })();

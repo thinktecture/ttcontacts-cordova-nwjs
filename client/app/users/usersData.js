@@ -84,5 +84,5 @@
         };
     }
 
-    angular.module('ttContacts').service('usersService', UsersDataservice);
+    app.module.service('usersService', UsersDataservice);
 })();
