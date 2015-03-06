@@ -4,7 +4,6 @@
     window.app = { module: angular.module('ttContacts', ['ngMaterial', 'ngCordova']) };
 
     app.module.config(function ($mdThemingProvider, $mdIconProvider) {
-
             $mdIconProvider
                 .defaultIconSet("./assets/svg/avatars.svg", 128)
                 .icon("menu", "./assets/svg/menu.svg", 24)
@@ -14,5 +13,8 @@
                 .icon("twitter", "./assets/svg/twitter.svg", 512)
                 .icon("phone", "./assets/svg/phone.svg", 512);
         });
+
+    app.module.run(function (menuService) {
+    });
 })();
 

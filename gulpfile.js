@@ -9,7 +9,7 @@ gulp.task("scripts", function () {
         //.pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(annotate())
-        .pipe(uglify())
+        //.pipe(uglify())
         //.pipe(sourcemaps.write())
         .pipe(gulp.dest('client/build'));
 });

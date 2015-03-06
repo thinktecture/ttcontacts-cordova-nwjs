@@ -5,11 +5,14 @@
      * @constructor
      */
     function MenuService() {
-        var gui = require('nw.gui');
-        var win = gui.Window.get();
-        var nativeMenuBar = new gui.Menu({ type: "menubar" });
-        nativeMenuBar.createMacBuiltin("TT Contacts");
-        win.menu = nativeMenuBar;
+        if (typeof process !== "undefined" && typeof require !== "undefined") {
+            var gui = require('nw.gui');
+
+            var window = gui.Window.get();
+            var nativeMenuBar = new gui.Menu({type: "menubar"});
+            nativeMenuBar.createMacBuiltin("TT Contacts");
+            window.menu = nativeMenuBar;
+        }
     }
 
     app.module.service('menuService', MenuService);
