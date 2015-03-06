@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function ContactsService($cordovaContacts) {
+    function ContactsService($cordovaContacts, $log) {
         this.createContact = function(person) {
             var cordovaContact = {};
             cordovaContact.displayName = person.firstName + ' ' + person.firstName + ' (TT-C)';
