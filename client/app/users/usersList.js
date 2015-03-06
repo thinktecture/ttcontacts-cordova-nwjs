@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function UsersListController(usersService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
+    function UsersListController(usersDataService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
         var self = this;
 
         self.selected = null;
@@ -10,7 +10,7 @@
         self.toggleList = toggleUsersList;
         self.share = share;
 
-        usersService
+        usersDataService
             .loadAll()
             .then(function (users) {
                 self.users = [].concat(users);

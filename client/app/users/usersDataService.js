@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function UsersDataservice($q) {
+    function UsersDataService($q) {
         var users = [
             {
                 firstName: 'Ingo',
@@ -84,5 +84,5 @@
         };
     }
 
-    app.module.service('usersService', UsersDataservice);
+    app.module.service('usersDataService', UsersDataService);
 })();
