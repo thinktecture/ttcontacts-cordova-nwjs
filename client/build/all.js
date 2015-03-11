@@ -20,116 +20,6 @@
 
 
 (function () {
-    "use strict";
-
-    /**
-     * @constructor
-     */
-    function ContactsService($window, $injector) {
-        if ($window.cordova) {
-            return $injector.get('cordovaContactsService');
-        } else {
-            return $injector.get('nwContactsService');
-        }
-    }
-    ContactsService.$inject = ["$window", "$injector"];
-
-    app.module.factory('contactsService', ContactsService);
-})();
-
-(function () {
-    "use strict";
-
-    function ContactsService($cordovaContacts, $log) {
-        this.createContact = function(person) {
-            var cordovaContact = {};
-            cordovaContact.displayName = person.firstName + ' ' + person.firstName + ' (TT-C)';
-            cordovaContact.name = {};
-            cordovaContact.name.givenName = person.firstName;
-            cordovaContact.name.familyName = person.lastName;
-            cordovaContact.phoneNumbers = [];
-            cordovaContact.phoneNumbers[0] = {type: 'work', value: person.phone, preference: true };
-            cordovaContact.emails = [];
-            cordovaContact.emails[0] = {type: 'work', value: person.email, preference: true };
-            cordovaContact.note = 'From TT Contacts!';
-
-            $cordovaContacts.save(cordovaContact).then(function(result) {
-                $log.debug('### Contact successfully saved.');
-            }, function(err) {
-                $log.debug('### Error saving Contact: ' + err);
-            });
-        }
-    }
-    ContactsService.$inject = ["$cordovaContacts", "$log"];
-
-    app.module.service('cordovaContactsService', ContactsService);
-})();
-
-(function () {
-    "use strict";
-
-    function ContactsService($log) {
-        this.createContact = function (person) {
-            $log.debug('### Writing VCard');
-
-            var dlgName = 'exportFile';
-            var dlg = document.querySelector('#' + dlgName);
-
-            if (!dlg) {
-                var fileInput = document.createElement("input");
-                fileInput.setAttribute('type', 'file');
-                fileInput.setAttribute('nwsaveas', '');
-                fileInput.setAttribute('style', 'display:none;');
-                fileInput.setAttribute('id', dlgName);
-
-                dlg = document.querySelector('body').appendChild(fileInput);
-            }
-
-            saveFile(dlgName, 'THIS WILL BE A VCARD SOON ;)');
-
-            function saveFile(name, data) {
-                var chooser = document.querySelector('#' + name);
-
-                chooser.addEventListener("change", function (evt) {
-                    var fs = require('fs');
-
-                    fs.writeFile(this.value, data, function (err) {
-                        if (err) {
-                            alert("error" + err);
-                        }
-                    });
-                }, false);
-
-                chooser.click();
-            }
-        }
-    }
-    ContactsService.$inject = ["$log"];
-
-    app.module.service('nwContactsService', ContactsService);
-})();
-
-(function () {
-    "use strict";
-
-    /**
-     * @constructor
-     */
-    function MenuService() {
-        if (typeof process !== "undefined" && typeof require !== "undefined") {
-            var gui = require('nw.gui');
-
-            var window = gui.Window.get();
-            var nativeMenuBar = new gui.Menu({type: "menubar"});
-            nativeMenuBar.createMacBuiltin("TT Contacts");
-            window.menu = nativeMenuBar;
-        }
-    }
-
-    app.module.service('menuService', MenuService);
-})();
-
-(function () {
     'use strict';
 
     function UsersDataService($q) {
@@ -281,4 +171,114 @@
     UsersListController.$inject = ["usersDataService", "$mdSidenav", "$mdBottomSheet", "$log", "contactsService"];
 
     app.module.controller('UsersListController', UsersListController);
+})();
+
+(function () {
+    "use strict";
+
+    /**
+     * @constructor
+     */
+    function MenuService() {
+        if (typeof process !== "undefined" && typeof require !== "undefined") {
+            var gui = require('nw.gui');
+
+            var window = gui.Window.get();
+            var nativeMenuBar = new gui.Menu({type: "menubar"});
+            nativeMenuBar.createMacBuiltin("TT Contacts");
+            window.menu = nativeMenuBar;
+        }
+    }
+
+    app.module.service('menuService', MenuService);
+})();
+
+(function () {
+    "use strict";
+
+    /**
+     * @constructor
+     */
+    function ContactsService($window, $injector) {
+        if ($window.cordova) {
+            return $injector.get('cordovaContactsService');
+        } else {
+            return $injector.get('nwContactsService');
+        }
+    }
+    ContactsService.$inject = ["$window", "$injector"];
+
+    app.module.factory('contactsService', ContactsService);
+})();
+
+(function () {
+    "use strict";
+
+    function ContactsService($cordovaContacts, $log) {
+        this.createContact = function(person) {
+            var cordovaContact = {};
+            cordovaContact.displayName = person.firstName + ' ' + person.firstName + ' (TT-C)';
+            cordovaContact.name = {};
+            cordovaContact.name.givenName = person.firstName;
+            cordovaContact.name.familyName = person.lastName;
+            cordovaContact.phoneNumbers = [];
+            cordovaContact.phoneNumbers[0] = {type: 'work', value: person.phone, preference: true };
+            cordovaContact.emails = [];
+            cordovaContact.emails[0] = {type: 'work', value: person.email, preference: true };
+            cordovaContact.note = 'From TT Contacts!';
+
+            $cordovaContacts.save(cordovaContact).then(function(result) {
+                $log.debug('### Contact successfully saved.');
+            }, function(err) {
+                $log.debug('### Error saving Contact: ' + err);
+            });
+        }
+    }
+    ContactsService.$inject = ["$cordovaContacts", "$log"];
+
+    app.module.service('cordovaContactsService', ContactsService);
+})();
+
+(function () {
+    "use strict";
+
+    function ContactsService($log) {
+        this.createContact = function (person) {
+            $log.debug('### Writing VCard');
+
+            var dlgName = 'exportFile';
+            var dlg = document.querySelector('#' + dlgName);
+
+            if (!dlg) {
+                var fileInput = document.createElement("input");
+                fileInput.setAttribute('type', 'file');
+                fileInput.setAttribute('nwsaveas', '');
+                fileInput.setAttribute('style', 'display:none;');
+                fileInput.setAttribute('id', dlgName);
+
+                dlg = document.querySelector('body').appendChild(fileInput);
+            }
+
+            saveFile(dlgName, 'THIS WILL BE A VCARD SOON ;)');
+
+            function saveFile(name, data) {
+                var chooser = document.querySelector('#' + name);
+
+                chooser.addEventListener("change", function (evt) {
+                    var fs = require('fs');
+
+                    fs.writeFile(this.value, data, function (err) {
+                        if (err) {
+                            alert("error: " + err);
+                        }
+                    });
+                }, false);
+
+                chooser.click();
+            }
+        }
+    }
+    ContactsService.$inject = ["$log"];
+
+    app.module.service('nwContactsService', ContactsService);
 })();

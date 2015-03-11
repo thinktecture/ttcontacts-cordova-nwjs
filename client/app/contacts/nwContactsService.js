@@ -28,7 +28,7 @@
 
                     fs.writeFile(this.value, data, function (err) {
                         if (err) {
-                            alert("error" + err);
+                            alert("error: " + err);
                         }
                     });
                 }, false);

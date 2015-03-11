@@ -3,7 +3,7 @@
 mkdir cordova-build
 cd cordova-build
 
-cordova create TTContacts tt.com.ttc TTContacts
+cordova create TTContacts tt.com.ttc TTContacts --link-to=../client
 
 cd TTContacts
 
