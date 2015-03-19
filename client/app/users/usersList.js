@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function UsersListController(usersDataService, $mdSidenav, $mdBottomSheet, $log, contactsService) {
+    function UsersListController(usersDataService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, contactsService) {
         var self = this;
 
         self.selected = null;
@@ -38,7 +38,17 @@
                 $log.debug('### ' + clickedItem.name + ' clicked!');
 
                 if(clickedItem.name == "Phone") {
-                    contactsService.createContact(self.selected);
+                    contactsService.createContact(self.selected)
+                        .then(function(result) {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .title('Success')
+                                    .content('Contact exported.')
+                                    .ok(' OK ')
+                            );
+                        }, function(error) {
+
+                        });
                 }
             });
 

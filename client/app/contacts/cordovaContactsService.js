@@ -1,8 +1,10 @@
 (function () {
     "use strict";
 
-    function ContactsService($cordovaContacts, $log) {
+    function ContactsService($cordovaContacts, $log, $q) {
         this.createContact = function(person) {
+            var deferred = $q.defer();
+
             var cordovaContact = {};
             cordovaContact.displayName = person.firstName + ' ' + person.firstName + ' (TT-C)';
             cordovaContact.name = {};
@@ -16,9 +18,13 @@
 
             $cordovaContacts.save(cordovaContact).then(function(result) {
                 $log.debug('### Contact successfully saved.');
+                deferred.resolve(result);
             }, function(err) {
                 $log.debug('### Error saving Contact: ' + err);
+                deferred.reject(err);
             });
+
+            return deferred.promise;
         }
     }
 

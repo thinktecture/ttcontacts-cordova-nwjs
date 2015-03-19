@@ -1,9 +1,9 @@
 (function () {
     "use strict";
 
-    function ContactsService($log) {
+    function ContactsService($log, $q) {
         this.createContact = function (person) {
-            $log.debug('### Writing VCard');
+            var deferred = $q.defer();
 
             var dlgName = 'exportFile';
             var dlg = document.querySelector('#' + dlgName);
@@ -25,16 +25,22 @@
 
                 chooser.addEventListener("change", function (evt) {
                     var fs = require('fs');
+                    $log.debug('### Writing VCard');
 
                     fs.writeFile(this.value, data, function (err) {
                         if (err) {
-                            alert("error: " + err);
+                            //alert("error: " + err);
+                            deferred.reject(err);
+                        } else {
+                            deferred.resolve();
                         }
                     });
                 }, false);
 
                 chooser.click();
             }
+
+            return deferred.promise;
         }
     }
 

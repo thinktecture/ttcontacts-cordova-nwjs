@@ -6,11 +6,12 @@
      */
     function MenuService() {
         if (typeof process !== "undefined" && typeof require !== "undefined") {
-            var gui = require('nw.gui');
+            var gui = require("nw.gui");
+
+            var nativeMenuBar = new gui.Menu({ type: "menubar" });
+            nativeMenuBar.createMacBuiltin("TT Contacts");
 
             var window = gui.Window.get();
-            var nativeMenuBar = new gui.Menu({type: "menubar"});
-            nativeMenuBar.createMacBuiltin("TT Contacts");
             window.menu = nativeMenuBar;
         }
     }

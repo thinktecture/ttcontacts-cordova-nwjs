@@ -6,11 +6,11 @@ var gulp = require('gulp'),
 
 gulp.task("scripts", function () {
     return gulp.src(['client/app/**/*.js', '!client/app/init.js'])
-        //.pipe(sourcemaps.init())
+        .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(annotate())
-        //.pipe(uglify())
-        //.pipe(sourcemaps.write())
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('client/build'));
 });
 
