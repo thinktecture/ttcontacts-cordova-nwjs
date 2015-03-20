@@ -6,7 +6,7 @@
   "window": {
     "title": "TT Contacts",
     "icon": "assets/resources/icon.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "position": "mouse",
     "width": 1024,

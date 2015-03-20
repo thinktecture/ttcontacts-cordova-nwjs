@@ -91,18 +91,24 @@
                 dlg = document.querySelector('body').appendChild(fileInput);
             }
 
-            saveFile(dlgName, 'THIS WILL BE A VCARD SOON ;)');
+            var vc = vCard();
+            vc.firstName =  person.firstName;
+            vc.lastName = person.lastName;
+            vc.workPhone = person.phone;
+            vc.email = person.email;
+            vc.note = 'From TT Contacts!';
+
+            saveFile(dlgName, vc.getFormattedString());
 
             function saveFile(name, data) {
                 var chooser = document.querySelector('#' + name);
 
                 chooser.addEventListener("change", function (evt) {
                     var fs = require('fs');
-                    $log.debug('### Writing VCard');
+                    $log.debug('### Writing vCard');
 
                     fs.writeFile(this.value, data, function (err) {
                         if (err) {
-                            //alert("error: " + err);
                             deferred.reject(err);
                         } else {
                             deferred.resolve();
@@ -119,6 +125,30 @@
     ContactsService.$inject = ["$log", "$q"];
 
     app.module.service('nwContactsService', ContactsService);
+})();
+
+(function () {
+    "use strict";
+
+    /**
+     * @constructor
+     */
+    function MenuService() {
+        if (typeof process !== "undefined" && typeof require !== "undefined") {
+            var gui = require("nw.gui");
+
+            var nativeMenuBar = new gui.Menu({ type: "menubar" });
+
+            if (process.platform === "darwin") {
+                nativeMenuBar.createMacBuiltin("TT Contacts");
+            }
+
+            var window = gui.Window.get();
+            window.menu = nativeMenuBar;
+        }
+    }
+
+    app.module.service('menuService', MenuService);
 })();
 
 (function () {
@@ -283,28 +313,4 @@
     UsersListController.$inject = ["usersDataService", "$mdSidenav", "$mdBottomSheet", "$mdDialog", "$log", "contactsService"];
 
     app.module.controller('UsersListController', UsersListController);
-})();
-
-(function () {
-    "use strict";
-
-    /**
-     * @constructor
-     */
-    function MenuService() {
-        if (typeof process !== "undefined" && typeof require !== "undefined") {
-            var gui = require("nw.gui");
-
-            var nativeMenuBar = new gui.Menu({ type: "menubar" });
-
-            if (process.platform === "darwin") {
-                nativeMenuBar.createMacBuiltin("TT Contacts");
-            }
-
-            var window = gui.Window.get();
-            window.menu = nativeMenuBar;
-        }
-    }
-
-    app.module.service('menuService', MenuService);
 })();

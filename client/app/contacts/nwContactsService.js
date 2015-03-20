@@ -18,18 +18,24 @@
                 dlg = document.querySelector('body').appendChild(fileInput);
             }
 
-            saveFile(dlgName, 'THIS WILL BE A VCARD SOON ;)');
+            var vc = vCard();
+            vc.firstName =  person.firstName;
+            vc.lastName = person.lastName;
+            vc.workPhone = person.phone;
+            vc.email = person.email;
+            vc.note = 'From TT Contacts!';
+
+            saveFile(dlgName, vc.getFormattedString());
 
             function saveFile(name, data) {
                 var chooser = document.querySelector('#' + name);
 
                 chooser.addEventListener("change", function (evt) {
                     var fs = require('fs');
-                    $log.debug('### Writing VCard');
+                    $log.debug('### Writing vCard');
 
                     fs.writeFile(this.value, data, function (err) {
                         if (err) {
-                            //alert("error: " + err);
                             deferred.reject(err);
                         } else {
                             deferred.resolve();
