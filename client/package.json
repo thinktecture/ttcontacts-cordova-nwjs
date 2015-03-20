@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "main": "index.html",
   "window": {
-    "title": "TTContacts",
+    "title": "TT Contacts",
     "icon": "assets/resources/icon.png",
     "toolbar": false,
     "frame": true,

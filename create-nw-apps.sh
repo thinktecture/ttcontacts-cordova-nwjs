@@ -2,4 +2,5 @@
 
 npm install node-webkit-builder
 
-~/node_modules/.bin/nwbuild -o nw-build client
+#~/node_modules/.bin/nwbuild -o nw-build client
+gulp nw

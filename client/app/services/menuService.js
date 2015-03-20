@@ -9,7 +9,10 @@
             var gui = require("nw.gui");
 
             var nativeMenuBar = new gui.Menu({ type: "menubar" });
-            nativeMenuBar.createMacBuiltin("TT Contacts");
+
+            if (process.platform === "darwin") {
+                nativeMenuBar.createMacBuiltin("TT Contacts");
+            }
 
             var window = gui.Window.get();
             window.menu = nativeMenuBar;
