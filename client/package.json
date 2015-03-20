@@ -5,6 +5,7 @@
   "main": "index.html",
   "window": {
     "title": "TTContacts",
+    "icon": "assets/resources/icon.png",
     "toolbar": false,
     "frame": true,
     "position": "mouse",
