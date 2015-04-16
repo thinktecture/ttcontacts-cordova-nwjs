@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    annotate = require('gulp-ng-annotate')
+    annotate = require('gulp-ng-annotate'),
     NwBuilder = require('node-webkit-builder');
 
 gulp.task("scripts", function () {
@@ -26,7 +26,8 @@ gulp.task("nw", function () {
         buildDir: "./nw-build",
         //winIco: "./client/assets/resources/icon.png",
         macIcns: "./client/assets/resources/icon.icns",
-        platforms: ["win32", "win64", "osx32", "osx64"]
+        platforms: [ "osx32", "win32", "linux32" ],
+        zip: false
     });
 
     nw.build().then(function () {

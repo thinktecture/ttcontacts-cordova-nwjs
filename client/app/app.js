@@ -17,4 +17,3 @@
     app.module.run(function (menuService) {
     });
 })();
-

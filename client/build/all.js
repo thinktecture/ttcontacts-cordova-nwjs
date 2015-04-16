@@ -18,7 +18,6 @@
     }]);
 })();
 
-
 (function () {
     "use strict";
 
@@ -133,7 +132,7 @@
     /**
      * @constructor
      */
-    function MenuService() {
+    function MenuService($log) {
         if (typeof process !== "undefined" && typeof require !== "undefined") {
             var gui = require("nw.gui");
 
@@ -147,6 +146,7 @@
             window.menu = nativeMenuBar;
         }
     }
+    MenuService.$inject = ["$log"];
 
     app.module.service('menuService', MenuService);
 })();

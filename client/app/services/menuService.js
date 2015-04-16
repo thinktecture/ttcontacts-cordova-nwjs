@@ -4,7 +4,7 @@
     /**
      * @constructor
      */
-    function MenuService() {
+    function MenuService($log) {
         if (typeof process !== "undefined" && typeof require !== "undefined") {
             var gui = require("nw.gui");
 
