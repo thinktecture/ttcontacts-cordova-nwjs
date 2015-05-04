@@ -181,3 +181,8 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+.idea
+cache
+client/bower_components
+cordova-build
+nw-build
