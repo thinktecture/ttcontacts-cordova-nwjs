@@ -1,6 +1,10 @@
 (function () {
     'use strict';
 
+    /**
+     * @param $q
+     * @constructor
+     */
     function UsersDataService($q) {
         var users = [
             {
@@ -77,12 +81,10 @@
             }
         ];
 
-        return {
-            loadAll: function () {
-                return $q.when(users);
-            }
-        };
-    }
+        this.loadAll = function () {
+            return $q.when(users);
+        }
+    };
 
-    app.module.service('usersDataService', UsersDataService);
+    app.module.service('usersDataService', UsersDataService)
 })();
