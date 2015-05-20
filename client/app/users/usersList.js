@@ -1,6 +1,9 @@
 (function () {
     'use strict';
-
+    
+    /**
+     * @param {UsersDataService} usersDataService
+     */
     function UsersListController(usersDataService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, contactsService) {
         var self = this;
 
@@ -10,7 +13,7 @@
         self.toggleList = toggleUsersList;
         self.share = share;
 
-        usersDataService
+        usersDataService.
             .loadAll()
             .then(function (users) {
                 self.users = [].concat(users);
@@ -22,7 +25,7 @@
         }
 
         function selectUser(user) {
-            self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+            self.selected = angular.isNumber(user) ? this.users[user] : user;
             self.toggleList();
         }
 
