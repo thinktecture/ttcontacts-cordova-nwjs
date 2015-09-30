@@ -3,7 +3,21 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
     annotate = require('gulp-ng-annotate'),
+    manifest = require('gulp-manifest'),
     NwBuilder = require('node-webkit-builder');
+
+
+gulp.task('manifest', function(){
+    gulp.src(['client/build/*', 'client/app/**', 'client/assets/**', 'client/libs/**', 'client/bower_components/**'], { base: './client' })
+        .pipe(manifest({
+            hash: true,
+            preferOnline: true,
+            network: ['*'],
+            filename: 'app.manifest',
+            exclude: 'app.manifest'
+        }))
+        .pipe(gulp.dest('client'));
+});
 
 gulp.task("scripts", function () {
     return gulp.src(['client/app/**/*.js', '!client/app/init.js'])
