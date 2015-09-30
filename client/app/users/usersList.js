@@ -13,7 +13,7 @@
         self.toggleList = toggleUsersList;
         self.share = share;
 
-        usersDataService.
+        usersDataService
             .loadAll()
             .then(function (users) {
                 self.users = [].concat(users);

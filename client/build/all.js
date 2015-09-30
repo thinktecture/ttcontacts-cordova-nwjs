@@ -154,6 +154,10 @@
 (function () {
     'use strict';
 
+    /**
+     * @param $q
+     * @constructor
+     */
     function UsersDataService($q) {
         var users = [
             {
@@ -230,20 +234,21 @@
             }
         ];
 
-        return {
-            loadAll: function () {
-                return $q.when(users);
-            }
-        };
+        this.loadAll = function () {
+            return $q.when(users);
+        }
     }
-    UsersDataService.$inject = ["$q"];
+    UsersDataService.$inject = ["$q"];;
 
-    app.module.service('usersDataService', UsersDataService);
+    app.module.service('usersDataService', UsersDataService)
 })();
 
 (function () {
     'use strict';
-
+    
+    /**
+     * @param {UsersDataService} usersDataService
+     */
     function UsersListController(usersDataService, $mdSidenav, $mdBottomSheet, $mdDialog, $log, contactsService) {
         var self = this;
 
@@ -265,7 +270,7 @@
         }
 
         function selectUser(user) {
-            self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+            self.selected = angular.isNumber(user) ? this.users[user] : user;
             self.toggleList();
         }
 
